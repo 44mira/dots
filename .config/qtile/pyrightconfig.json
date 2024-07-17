@@ -1,0 +1,11 @@
+{
+  "include": [
+    "../qtile",
+    "./settings"
+  ],
+  "reportOptionalSubscript": false,
+  "reportOptionalMemberAccess": false,
+  "reportUnusedImport": false,
+  "reportAttributeAccessIssue": false,
+  "reportPrivateImportUsage": false,
+}

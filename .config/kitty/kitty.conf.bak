@@ -1,0 +1,42 @@
+# Window settings
+window_padding_width 5
+enabled_layouts horizontal, fat, stack
+
+# Font settings
+font_size 16
+disable_ligatures yes
+modify_font cell_height 100%
+
+# FANTASQUESANSM 
+font_family      FantasqueSansM Nerd Font
+bold_font        FantasqueSansM Nerd Font Bold
+italic_font      FantasqueSansM Nerd Font Italic
+
+# BONG BONG BONG
+enable_audio_bell no
+
+# Keep current directory on new tab and split
+map kitty_mod+enter new_window_with_cwd
+map kitty_mod+t new_tab_with_cwd
+
+allow_remote_control socket-only
+listen_on unix:/tmp/kitty
+shell_integration enabled
+
+# Kitty Scrollback Configuration
+
+# kitty-scrollback.nvim Kitten alias
+action_alias kitty_scrollback_nvim kitten /home/tyrael/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py
+
+# Browse scrollback buffer in nvim
+map kitty_mod+h kitty_scrollback_nvim
+# Browse output of the last shell command in nvim
+map kitty_mod+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
+# Show clicked command output in nvim
+mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
+
+
+# BEGIN_KITTY_THEME
+# Challenger Deep
+include current-theme.conf
+# END_KITTY_THEME
