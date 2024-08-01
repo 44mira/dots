@@ -29,4 +29,6 @@ dunst &
 
 # Setup Wallpaper and update colors
 wal -R
-feh --bg-scale ~/Pictures/wallpaper.png
+
+# Remove mouse acceleration
+xinput | rg 'HID .* Mouse' | awk '{print $6}' | sed 's|id=||' | xargs -I {} xinput --set-prop {} 'libinput Accel Speed' -1

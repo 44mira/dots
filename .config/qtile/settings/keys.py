@@ -1,11 +1,13 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key, Group, Drag, Click, ScratchPad, DropDown
+import pathlib
 
+scripts = (pathlib.Path.home() / ".config/qtile/scripts").absolute()
 mod = "mod4"
 terminal = "kitty"
 
 keys = [
-    # [[ Base kitty commands ]] {{{
+    # [[ Base qtile commands ]] {{{
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -145,8 +147,14 @@ keys = [
     Key(
         [mod, "shift"],
         "e",
-        lazy.spawn("/home/tyrael/.config/qtile/scripts/power-menu"),
+        lazy.spawn(str(scripts / "power-menu")),
         desc="Launch powermenu",
+    ),
+    Key(
+        [mod, "shift"],
+        "w",
+        lazy.spawn(str(scripts / "wiki.py")),
+        desc="Launch wiki search",
     ),
     # }}}
 ]

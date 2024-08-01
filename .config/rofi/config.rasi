@@ -1,6 +1,6 @@
 configuration {
 	modi: "window,run,ssh,keys,drun";
-	font: "Jet Brains Mono Regular 14";
+	font: "CommitMono Nerd Font 17";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/

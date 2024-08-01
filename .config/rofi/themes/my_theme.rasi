@@ -3,7 +3,7 @@
  */
 * {
     text-color:                  #f2f2f2;
-    background-color:            #000000;
+    background-color:            #00000000;
     lightbg:                     #534c48;
     red:                         #f15d22;
     orange:                      #faa41a; 
@@ -71,7 +71,6 @@ prompt{
     text-color: @black-foreground;
     padding: 	0.25% 0.75% 0.25% 0.75%;
     border-radius: 5%;
-    font: "Jet Brains Mono Regular 14";
 }
 
 inputbar {
@@ -83,7 +82,7 @@ textbox-prompt-colon {
     str:        " ::";
     margin:     0px 0.3em 0em 0em ;
     text-color: @normal-foreground;
-    //padding: 1.40% 0% 1% 0%;
+    // padding: 1.40% 0% 1% 0%;
 }
 
 listview {
@@ -92,8 +91,8 @@ listview {
     padding:      2px 0px 0px ;
     text-color: @orange;
     columns : 2;
-    lines:  10;
-    spacing: 1%;
+    lines:  5;
+    spacing: 3%;
     //background-color: @orange;
 }
 element {
@@ -105,6 +104,7 @@ element {
 element-icon {
     size: 32px;
     text-color: inherit;
+    padding: 0px 10px 0px 0px;
 }
 
 element-text {

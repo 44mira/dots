@@ -107,7 +107,7 @@ local servers = {
     },
   },
   elixirls = {
-    cmd = { '/home/tyrael/Documents/coding/aux/elixir-ls-v0.21.1/language_server.sh' },
+    cmd = { '/home/tyrael/.asdf/installs/elixir/elixir-ls/language_server.sh' },
   },
   pyright = {},
   tsserver = {},

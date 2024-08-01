@@ -143,11 +143,6 @@ screens = [
                     },
                 ),
                 widget.Sep(),
-                widget.Net(
-                    interface="wlan0",
-                    format="{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}",
-                ),
-                widget.Sep(),
                 widget.Volume(
                     emoji=True,
                     emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
