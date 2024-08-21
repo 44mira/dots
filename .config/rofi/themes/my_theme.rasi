@@ -3,12 +3,12 @@
  */
 * {
     text-color:                  #f2f2f2;
-    background-color:            #00000000;
+    background-color:            #000000;
     lightbg:                     #534c48;
     red:                         #f15d22;
     orange:                      #faa41a; 
     blue:                        #48b9c7;
-    pywal-color:                 #FC77C1;
+    pywal-color:                 #f0a07e;
     black-foreground:            #000000;
 
     selected-normal-foreground:  @foreground;
@@ -88,12 +88,12 @@ textbox-prompt-colon {
 listview {
     fixed-height: 0;
     border:       2px 0px 0px ;
-    padding:      2px 0px 0px ;
+    padding:      10px ;
     text-color: @orange;
     columns : 2;
     lines:  5;
     spacing: 3%;
-    //background-color: @orange;
+    //background-color: #00000033;
 }
 element {
     border: 0;

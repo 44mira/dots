@@ -2,29 +2,37 @@
 
 import pathlib
 import subprocess
+from dataclasses import dataclass
+from typing import Literal
 
-BOOKMARKS = {
-    "Stardew Valley": "https://stardewvalleywiki.com/",
-    "Dead Cells": "https://deadcells.wiki.gg/wiki/",
-}
-
-ICONS_PATH = pathlib.Path.home() / ".config/qtile/scripts/icons"
-ICONS = {
-    "Stardew Valley": "stardew.png",
-    "Dead Cells": "deadcells.png",
-}
+# The configuration CSV is found in ~/.config/qtile/scripts/wiki_links.csv
 
 
-def select_wiki() -> str:
-    # get keys in dict
+@dataclass(slots=True)
+class Game:
+    name: str
+    link: str
+    icon: str
+
+    def __str__(self) -> str:
+        return self.name
+
+
+SCRIPTS_PATH = pathlib.Path.home() / ".config/qtile/scripts"
+ICONS_PATH = SCRIPTS_PATH / "icons"
+
+
+def select_wiki(games: list[Game]) -> Game | Literal["ERROR!"]:
+    game_hashmap = {game.name: index for index, game in enumerate(games)}
+
+    # add icons to the displayed wiki names
     wikis = "\n".join(
-        rf"{wiki}\0icon\x1f{ICONS_PATH.absolute() / ICONS[wiki]}"
-        for wiki in BOOKMARKS.keys()
+        rf"{game}\0icon\x1f{ICONS_PATH.absolute() / game.icon}" for game in games
     )
 
     # create rofi menu
     selected_wiki = subprocess.run(
-        f"echo -en '{wikis}' | rofi -dmenu -p 'wiki' -show-icons",
+        f"echo -en '{wikis}' | rofi -dmenu -i -p 'wiki' -show-icons",
         shell=True,
         capture_output=True,
         text=True,
@@ -32,7 +40,7 @@ def select_wiki() -> str:
 
     selected_text = selected_wiki.stdout.strip()
 
-    if selected_text not in BOOKMARKS.keys():
+    if selected_text not in [game.name for game in games]:
         subprocess.run(
             [
                 "rofi",
@@ -43,13 +51,13 @@ def select_wiki() -> str:
         )
         return "ERROR!"
 
-    return selected_text
+    return games[game_hashmap[selected_text]]
 
 
-def search_wiki(selected_wiki: str):
+def search_wiki(selected_wiki: Game):
     # Create the search bar
     search_term = subprocess.run(
-        rf"rofi -dmenu -p '{selected_wiki}' -theme-str 'listview {{lines: 0;}}'",
+        f"rofi -dmenu -p '{selected_wiki}' -theme-str 'listview {{lines: 0;}}'",
         shell=True,
         capture_output=True,
         text=True,
@@ -68,13 +76,20 @@ def search_wiki(selected_wiki: str):
 
     # Run browser with the link
     subprocess.run(
-        ["firefox", "--new-window", BOOKMARKS[selected_wiki] + search_term],
+        ["firefox", "--new-tab", selected_wiki.link + search_term],
         capture_output=True,
     )
 
 
 if __name__ == "__main__":
-    selected_wiki = select_wiki()
+    # Parse the CSV into the dictionaries
+    games = []
+    with open(SCRIPTS_PATH / "wiki_links.csv", "r") as f:
+        for line in f:
+            values = line.strip().split(",")
+            games.append(Game(*(value for value in values)))
+
+    selected_wiki = select_wiki(games)
     if selected_wiki == "ERROR!":
         exit(1)
     search_wiki(selected_wiki)

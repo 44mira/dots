@@ -7,7 +7,8 @@ return {
   opts = {
     font = 'FantasqueSansM Nerd Font=20',
     theme = '1337',
-    background_image = '/home/tyrael/Pictures/wallpaper.png',
+    background = '#3c3163',
+    -- background_image = '/home/tyrael/Pictures/wallpaper.png',
     line_offset = function(args)
       -- get current line number as offset
       return args.line1

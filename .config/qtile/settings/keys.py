@@ -1,5 +1,5 @@
 from libqtile.lazy import lazy
-from libqtile.config import Key, Group, Drag, Click, ScratchPad, DropDown
+from libqtile.config import Key, Group, Drag, Click, ScratchPad, DropDown, Match
 import pathlib
 
 scripts = (pathlib.Path.home() / ".config/qtile/scripts").absolute()
@@ -136,6 +136,18 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "w", lazy.spawn("firefox"), desc="Launch firefox"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Launch flameshot"),
+    Key(
+        [mod, "shift"],
+        "s",
+        lazy.group["scratchpad"].dropdown_toggle("spotify"),
+        desc="Launch spotify scratchpad",
+    ),
+    Key(
+        [mod, "shift"],
+        "d",
+        lazy.group["scratchpad"].dropdown_toggle("discord"),
+        desc="Launch spotify scratchpad",
+    ),
     # }}}
     # [[ Rofi menu commands ]] {{{
     Key(
@@ -159,7 +171,7 @@ keys = [
     # }}}
 ]
 
-# [[ Groups ]] {{{
+# [[ Groups ]] {{
 groups = [Group(i) for i in "123456789"]
 for i in groups:
     keys.extend(
@@ -197,10 +209,30 @@ groups.append(
                 height=0.22,
                 opacity=1,
             ),
+            DropDown(
+                "spotify",
+                "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify",
+                match=Match(wm_class="Spotify"),
+                x=0.1,
+                y=0.08,
+                height=0.8,
+                width=0.8,
+                opacity=1,
+            ),
+            DropDown(
+                "discord",
+                "vesktop",
+                match=Match(wm_class="vesktop"),
+                x=0.1,
+                y=0.08,
+                height=0.8,
+                width=0.8,
+                opacity=1,
+            ),
         ],
     )
 )
-# }}}
+# }}
 
 # [[ Mouse binds ]] {{{
 # Drag floating layouts

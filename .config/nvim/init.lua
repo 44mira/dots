@@ -139,6 +139,12 @@ local servers = {
   },
 }
 
+vim.filetype.add {
+  extension = {
+    mdx = 'markdown',
+  },
+}
+
 -- }}}
 
 -- [[ Fold settings ]] {{{1
@@ -182,9 +188,9 @@ vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.opt.wrap = true
-vim.opt.breakindent = true
-vim.opt.breakindentopt = 'list:-1'
-vim.opt.showbreak = string.rep(' ', 3) -- Make it so that long lines wrap smartly
+-- vim.opt.breakindent = true
+-- vim.opt.breakindentopt = 'list:-1'
+-- vim.opt.showbreak = string.rep(' ', 3) -- Make it so that long lines wrap smartly
 vim.opt.linebreak = true
 vim.opt.cocu = 'nvci'
 vim.opt.conceallevel = 2
@@ -527,6 +533,7 @@ require('lazy').setup {
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
       require('luasnip.loaders.from_vscode').lazy_load()
+      require('luasnip.loaders.from_lua').load { paths = './snippets' }
 
       cmp.setup {
         snippet = {

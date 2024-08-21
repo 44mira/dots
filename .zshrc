@@ -14,6 +14,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light softmoth/zsh-vim-mode
 
 # Add in snippets
 zinit snippet OMZP::git
@@ -26,10 +27,8 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # Keybindings
-bindkey -e  # Emacs binds
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
+bindkey -v  
+KEYTIMEOUT=1
 
 # History
 HISTSIZE=5000                 # how many commands to track in history
@@ -71,6 +70,7 @@ alias ls="exa"
 alias ll="exa -s type -la"
 alias ff="fastfetch"
 alias lg="lazygit"
+alias bat="bat -P"
 
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
@@ -81,3 +81,8 @@ eval "$(oh-my-posh init zsh --config ~/.thm.omp.json)"
 
 # tty colors
 (cat ~/.config/wpg/sequences &)
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
