@@ -37,7 +37,7 @@ bind('n', '<leader>zen', function()
 end, { desc = '[Zen] mode' })
 
 -- Trigger Twilight
-bind('n', '<leader>tw', '<cmd>Twilight<CR>', { desc = 'Toggle [Tw]ilight' })
+bind('n', '<leader>zet', '<cmd>Twilight<CR>', { desc = 'Toggle [Tw]ilight' })
 
 -- Take code snapshot
 bind('v', '<leader><leader>', function()
@@ -494,6 +494,7 @@ require('lazy').setup {
         javascript = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
         typescriptreact = { { 'prettierd', 'prettier' } },
+        astro = { { 'prettierd', 'prettier' } },
         json = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
         bash = { 'shfmt' },

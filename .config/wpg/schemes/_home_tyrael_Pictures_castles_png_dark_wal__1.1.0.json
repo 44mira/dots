@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/tyrael/Pictures/castles.png",
+    "alpha": "100",
+    "special": {
+        "background": "#27221a",
+        "foreground": "#e0e0dd",
+        "cursor": "#e0e0dd"
+    },
+    "colors": {
+        "color0": "#27221a",
+        "color1": "#9F9069",
+        "color2": "#C8A773",
+        "color3": "#687A89",
+        "color4": "#758592",
+        "color5": "#A0A098",
+        "color6": "#CCC3A8",
+        "color7": "#e0e0dd",
+        "color8": "#9c9c9a",
+        "color9": "#9F9069",
+        "color10": "#C8A773",
+        "color11": "#687A89",
+        "color12": "#758592",
+        "color13": "#A0A098",
+        "color14": "#CCC3A8",
+        "color15": "#e0e0dd"
+    }
+}

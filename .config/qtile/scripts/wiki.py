@@ -14,20 +14,17 @@ class Game:
     link: str
     icon: str
 
-    def __str__(self) -> str:
-        return self.name
-
 
 SCRIPTS_PATH = pathlib.Path.home() / ".config/qtile/scripts"
 ICONS_PATH = SCRIPTS_PATH / "icons"
 
 
 def select_wiki(games: list[Game]) -> Game | Literal["ERROR!"]:
-    game_hashmap = {game.name: index for index, game in enumerate(games)}
+    game_index = {game.name: index for index, game in enumerate(games)}
 
     # add icons to the displayed wiki names
     wikis = "\n".join(
-        rf"{game}\0icon\x1f{ICONS_PATH.absolute() / game.icon}" for game in games
+        rf"{game.name}\0icon\x1f{ICONS_PATH.absolute() / game.icon}" for game in games
     )
 
     # create rofi menu
@@ -51,7 +48,7 @@ def select_wiki(games: list[Game]) -> Game | Literal["ERROR!"]:
         )
         return "ERROR!"
 
-    return games[game_hashmap[selected_text]]
+    return games[game_index[selected_text]]
 
 
 def search_wiki(selected_wiki: Game):

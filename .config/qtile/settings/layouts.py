@@ -6,22 +6,22 @@ from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
 
 colors = [
-    "#120f16",
-    "#b85f52",
-    "#e77861",
-    "#958CC5",
-    "#f0a07e",
-    "#BAADCE",
-    "#C19AC2",
-    "#ddd1db",
-    "#9a9299",
-    "#625D82",
-    "#B18FB8",
-    "#958CC5",
-    "#AE98C7",
-    "#BAADCE",
-    "#C19AC2",
-    "#ddd1db",
+    "#27221a",
+    "#9F9069",
+    "#C8A773",
+    "#687A89",
+    "#758592",
+    "#A0A098",
+    "#CCC3A8",
+    "#e0e0dd",
+    "#9c9c9a",
+    "#9F9069",
+    "#C8A773",
+    "#687A89",
+    "#758592",
+    "#A0A098",
+    "#CCC3A8",
+    "#e0e0dd",
 ]
 
 # colors[0] : Background

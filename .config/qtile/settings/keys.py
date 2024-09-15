@@ -148,6 +148,18 @@ keys = [
         lazy.group["scratchpad"].dropdown_toggle("discord"),
         desc="Launch spotify scratchpad",
     ),
+    Key(
+        [mod, "shift"],
+        "Return",
+        lazy.group["scratchpad"].dropdown_toggle("terminal"),
+        desc="Launch terminal scratchpad",
+    ),
+    Key(
+        [mod],
+        "c",
+        lazy.spawn(str(scripts / "colorpick")),
+        desc="Grab a color from screen and put it in clipboard",
+    ),
     # }}}
     # [[ Rofi menu commands ]] {{{
     Key(
@@ -197,6 +209,8 @@ for i in groups:
         ]
     )
 
+CENTERED_SQUARE_DIMENSIONS = {"x": 0.1, "y": 0.08}
+
 groups.append(
     ScratchPad(
         "scratchpad",
@@ -213,21 +227,28 @@ groups.append(
                 "spotify",
                 "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify",
                 match=Match(wm_class="Spotify"),
-                x=0.1,
-                y=0.08,
                 height=0.8,
                 width=0.8,
                 opacity=1,
+                **CENTERED_SQUARE_DIMENSIONS,
             ),
             DropDown(
                 "discord",
                 "vesktop",
                 match=Match(wm_class="vesktop"),
-                x=0.1,
-                y=0.08,
                 height=0.8,
                 width=0.8,
                 opacity=1,
+                on_focus_lost_hide=False,
+                **CENTERED_SQUARE_DIMENSIONS,
+            ),
+            DropDown(
+                "terminal",
+                terminal,
+                height=0.8,
+                width=0.8,
+                opacity=1,
+                **CENTERED_SQUARE_DIMENSIONS,
             ),
         ],
     )
